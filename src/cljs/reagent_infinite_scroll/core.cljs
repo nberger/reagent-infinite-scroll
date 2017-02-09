@@ -23,7 +23,6 @@
     (let [items (:items @db)
           loading? (:loading? @db)
           more-items-available? (< (count items) 40)]
-      (println "count " (count items) "more available? " more-items-available?)
       [:div
        [:h2 "Welcome to reagent-infinite-scroll example"]
        [:p "This is an example page for the infinite-scroll code from "
@@ -49,8 +48,7 @@
                                                (swap! db update :items
                                                       (fn [items]
                                                         (concat items (range (inc (last items))
-                                                                             (+ (last items) (inc page-size))))))
-                                               (println "finished loading. count: " (count (:items @db))))
+                                                                             (+ (last items) (inc page-size)))))))
                                              1000))}]])))
 
 ;; -------------------------
